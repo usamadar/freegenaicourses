@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { Course } from '@/types/course'
 
 interface BookmarkStore {
@@ -13,20 +13,30 @@ export const useBookmarkStore = create<BookmarkStore>()(
     (set, get) => ({
       bookmarkedCourses: {},
       toggleBookmark: (courseId: string) => {
-        set((state) => ({
-          bookmarkedCourses: {
-            ...state.bookmarkedCourses,
-            [courseId]: !state.bookmarkedCourses[courseId],
-          },
-        }))
+        set((state) => {
+          const newState = {
+            bookmarkedCourses: {
+              ...state.bookmarkedCourses,
+              [courseId]: !state.bookmarkedCourses[courseId],
+            },
+          }
+          console.log('Store state after toggle:', newState)
+          return newState
+        })
       },
       isBookmarked: (courseId: string) => {
-        return get().bookmarkedCourses[courseId] || false
+        const state = get()
+        const result = !!state.bookmarkedCourses[courseId]
+        console.log('isBookmarked check:', { courseId, result, state })
+        return result
       },
     }),
     {
       name: 'course-bookmarks',
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
+      onRehydrateStorage: () => (state) => {
+        console.log('Hydrated state:', state)
+      },
     }
   )
 )

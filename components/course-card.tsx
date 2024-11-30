@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Clock, GraduationCap, Layout, Bookmark } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 import { Course } from "@/types/course"
 import { Badge } from "@/components/ui/badge"
@@ -20,8 +21,29 @@ interface CourseCardProps {
 }
 
 export function CourseCard({ course }: CourseCardProps) {
-  const { toggleBookmark, isBookmarked } = useBookmarkStore()
+  const { toggleBookmark, isBookmarked, bookmarkedCourses } = useBookmarkStore()
   const bookmarked = isBookmarked(course.id)
+
+  // Add hydration state tracking
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
+
+  // Debug logging
+  useEffect(() => {
+    console.log('-------- CourseCard Debug --------')
+    console.log('Course ID:', course.id)
+    console.log('Hydrated:', isHydrated)
+    console.log('Bookmarked value:', bookmarked)
+    console.log('BookmarkedCourses state:', bookmarkedCourses)
+    console.log('LocalStorage:', localStorage.getItem('course-bookmarks'))
+    console.log('--------------------------------')
+  }, [course.id, bookmarked, bookmarkedCourses, isHydrated])
+
+  // Don't show filled state until hydrated
+  const showFilled = isHydrated && bookmarked
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-200 hover:shadow-lg">
@@ -37,9 +59,12 @@ export function CourseCard({ course }: CourseCardProps) {
           size="icon"
           className="absolute top-2 right-2 bg-white/80 hover:bg-white"
           onClick={() => toggleBookmark(course.id)}
-          aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
+          aria-label={showFilled ? "Remove from bookmarks" : "Add to bookmarks"}
         >
-          <Bookmark className={`h-4 w-4 ${bookmarked ? "fill-primary" : ""}`} />
+          <Bookmark 
+            data-bookmarked={showFilled}
+            className={`h-4 w-4 ${showFilled ? "fill-primary" : ""}`} 
+          />
         </Button>
       </div>
       <CardHeader>

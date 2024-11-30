@@ -119,7 +119,7 @@ export default function CoursesDirectory() {
               </div>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {levelCourses.map((course) => (
-                  <CourseCard key={course.id} course={course} isBookmarked={isBookmarked(course.id)} />
+                  <CourseCard key={course.id} course={course} />
                 ))}
               </div>
             </div>
