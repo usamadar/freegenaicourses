@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Clock, GraduationCap, Layout, Bookmark, Check } from 'lucide-react'
+import { Clock, GraduationCap, Layout, Bookmark, Check, Video } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { Course } from "@/types/course"
@@ -73,7 +73,12 @@ export function CourseCard({ course }: CourseCardProps) {
       </div>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <Badge variant="outline">{course.category}</Badge>
+          <div className="flex items-center gap-2">
+            <Badge variant="outline">{course.category}</Badge>
+            {course.format === "Video" && (
+              <Video className="h-4 w-4 text-muted-foreground" />
+            )}
+          </div>
           <Badge 
             variant="secondary"
             className={`

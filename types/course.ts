@@ -9,5 +9,6 @@ export type Course = {
   topics: string[]
   link: string
   image: string
+  format?: "Video" | "Interactive" | "Article"
 }
 

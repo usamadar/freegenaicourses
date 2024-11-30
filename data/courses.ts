@@ -207,6 +207,43 @@ const existingCourses: Course[] = [
     topics: ["Prompt Engineering", "Iterative Prompting", "Chain of Thought", "API Integration"],
     link: "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
     image: "https://plus.unsplash.com/premium_photo-1726079246917-46f2b37f7e9e?q=80&w=3540&auto=format&fit=crop"
+  },
+  {
+    id: "ibm-gen-ai",
+    title: "Generative AI Fundamentals",
+    provider: "IBM",
+    duration: "6 hours",
+    level: "Beginner",
+    category: "Foundational",
+    description: "Learn the fundamentals of generative AI, including key concepts, architectures, and real-world applications with IBM's comprehensive course.",
+    topics: ["Generative AI Basics", "Foundation Models", "IBM AI Tools", "Use Cases"],
+    link: "https://www.coursera.org/learn/generative-ai-foundation-models-and-platforms",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=60"
+  },
+  {
+    id: "huggingface-nlp",
+    title: "Natural Language Processing with Transformers",
+    provider: "Hugging Face",
+    duration: "54-72 hours",
+    level: "Intermediate",
+    category: "Specialized",
+    description: "Master modern NLP using transformers with Hugging Face's official course. Learn to fine-tune and deploy state-of-the-art language models.",
+    topics: ["Transformers", "NLP", "Model Fine-tuning", "Hugging Face Hub"],
+    link: "https://huggingface.co/learn/nlp-course/chapter1/1",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60"
+  },
+  {
+    id: "greatlearning-gen-ai-youtube",
+    title: "Generative AI Full Course",
+    provider: "Great Learning",
+    duration: "7.7 hours",
+    level: "Intermediate",
+    category: "Foundational",
+    description: "A comprehensive guide to Generative AI fundamentals, covering LLMs, diffusion models, GANs, and their practical applications in modern AI systems.",
+    topics: ["Generative Models", "LLMs", "Diffusion Models", "GANs", "Use Cases"],
+    link: "https://www.youtube.com/watch?v=hHnvo4f35GA",
+    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&auto=format&fit=crop&q=60",
+    format: "Video"
   }
 ]
 

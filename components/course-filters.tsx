@@ -47,7 +47,7 @@ export function CourseFilters({
   onCategoryChange,
   onDurationChange,
   onReset,
-  activeFiltersCount
+  activeFiltersCount,
 }: CourseFiltersProps) {
   const [durationRange, setDurationRange] = useState<[number, number]>([0, 160])
 
