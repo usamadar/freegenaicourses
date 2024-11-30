@@ -10,54 +10,53 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import { Bookmark } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-interface BookmarkedCoursesProps {
+interface CompletedCoursesProps {
   courses: Course[]
 }
 
-export function BookmarkedCourses({ courses }: BookmarkedCoursesProps) {
-  const { bookmarkedCourses } = useBookmarkStore()
-  const bookmarkedCoursesList = courses.filter(
-    (course) => bookmarkedCourses[course.id]
+export function CompletedCourses({ courses }: CompletedCoursesProps) {
+  const { completedCourses } = useBookmarkStore()
+  const completedCoursesList = courses.filter(
+    (course) => completedCourses[course.id]
   )
 
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon" className="relative">
-          <Bookmark className="h-4 w-4" />
-          {bookmarkedCoursesList.length > 0 && (
+          <Check className="h-4 w-4" />
+          {completedCoursesList.length > 0 && (
             <span className="absolute -top-2 -right-2 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
-              {bookmarkedCoursesList.length}
+              {completedCoursesList.length}
             </span>
           )}
         </Button>
       </SheetTrigger>
       <SheetContent className="w-[90vw] sm:max-w-2xl">
         <SheetHeader>
-          <SheetTitle>Bookmarked Courses</SheetTitle>
+          <SheetTitle>Completed Courses</SheetTitle>
           <SheetDescription>
-            Your saved courses for later reference
+            Courses you have marked as completed
           </SheetDescription>
         </SheetHeader>
         <ScrollArea className="h-[calc(100vh-8rem)] pr-4">
-          {bookmarkedCoursesList.length > 0 ? (
+          {completedCoursesList.length > 0 ? (
             <div className="mt-8 grid gap-4">
-              {bookmarkedCoursesList.map((course) => (
+              {completedCoursesList.map((course) => (
                 <CourseCard key={course.id} course={course} />
               ))}
             </div>
           ) : (
             <div className="mt-8 text-center text-muted-foreground">
-              <p>No bookmarked courses yet</p>
-              <p className="text-sm">Save courses by clicking the bookmark icon on any course card</p>
+              <p>No completed courses yet</p>
+              <p className="text-sm">Mark courses as complete by clicking the check icon on any course card</p>
             </div>
           )}
         </ScrollArea>
       </SheetContent>
     </Sheet>
   )
-}
-
+} 

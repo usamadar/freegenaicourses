@@ -4,39 +4,49 @@ import { Course } from '@/types/course'
 
 interface BookmarkStore {
   bookmarkedCourses: { [key: string]: boolean }
+  completedCourses: { [key: string]: boolean }
+  isHydrated: boolean
   toggleBookmark: (courseId: string) => void
+  toggleComplete: (courseId: string) => void
   isBookmarked: (courseId: string) => boolean
+  isCompleted: (courseId: string) => boolean
+  setHydrated: () => void
 }
 
 export const useBookmarkStore = create<BookmarkStore>()(
   persist(
     (set, get) => ({
       bookmarkedCourses: {},
+      completedCourses: {},
+      isHydrated: false,
       toggleBookmark: (courseId: string) => {
-        set((state) => {
-          const newState = {
-            bookmarkedCourses: {
-              ...state.bookmarkedCourses,
-              [courseId]: !state.bookmarkedCourses[courseId],
-            },
-          }
-          console.log('Store state after toggle:', newState)
-          return newState
-        })
+        if (!get().isHydrated) return
+        set((state) => ({
+          ...state,
+          bookmarkedCourses: {
+            ...state.bookmarkedCourses,
+            [courseId]: !state.bookmarkedCourses[courseId],
+          },
+        }))
       },
-      isBookmarked: (courseId: string) => {
-        const state = get()
-        const result = !!state.bookmarkedCourses[courseId]
-        console.log('isBookmarked check:', { courseId, result, state })
-        return result
+      toggleComplete: (courseId: string) => {
+        if (!get().isHydrated) return
+        set((state) => ({
+          ...state,
+          completedCourses: {
+            ...state.completedCourses,
+            [courseId]: !state.completedCourses[courseId],
+          },
+        }))
       },
+      isBookmarked: (courseId: string) => get().isHydrated && !!get().bookmarkedCourses[courseId],
+      isCompleted: (courseId: string) => get().isHydrated && !!get().completedCourses[courseId],
+      setHydrated: () => set({ isHydrated: true }),
     }),
     {
       name: 'course-bookmarks',
       storage: createJSONStorage(() => localStorage),
-      onRehydrateStorage: () => (state) => {
-        console.log('Hydrated state:', state)
-      },
+      skipHydration: true,
     }
   )
 )

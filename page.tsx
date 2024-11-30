@@ -8,13 +8,17 @@ import { Badge } from "@/components/ui/badge"
 import { BookmarkedCourses } from "@/components/bookmarked-courses"
 import { Separator } from "@/components/ui/separator"
 import { useBookmarkStore } from "@/lib/store"
+import { Check, Bookmark } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { HydrationZustand } from "@/components/providers/hydration-provider"
+import { CompletedCourses } from "@/components/completed-courses"
 
 export default function CoursesDirectory() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedLevel, setSelectedLevel] = useState("all")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [durationRange, setDurationRange] = useState<[number, number]>([0, 160])
-  const { isBookmarked } = useBookmarkStore()
+  const { isBookmarked, isCompleted, isHydrated } = useBookmarkStore()
 
   const parseDuration = (duration: string): number => {
     if (duration.includes("-")) {
@@ -64,84 +68,89 @@ export default function CoursesDirectory() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="border-b bg-white">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div>
-              <h1 className="text-3xl font-bold">Free GenAI Course Directory</h1>
-              <p className="mt-1 text-muted-foreground">
-                Discover high-quality generative AI courses to advance your skills
-              </p>
+    <HydrationZustand>
+      <div className="min-h-screen bg-gray-50">
+        <div className="border-b bg-white">
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+              <div>
+                <h1 className="text-3xl font-bold">Free GenAI Course Directory</h1>
+                <p className="mt-1 text-muted-foreground">
+                  Discover high-quality generative AI courses to advance your skills
+                </p>
+              </div>
+              <div className="flex gap-2">
+                <CompletedCourses courses={courses} />
+                <BookmarkedCourses courses={courses} />
+              </div>
             </div>
-            <BookmarkedCourses courses={courses} />
+            <Separator className="my-6" />
+            <CourseFilters
+              categories={categories}
+              levels={levels}
+              selectedLevel={selectedLevel}
+              selectedCategory={selectedCategory}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              onLevelChange={setSelectedLevel}
+              onCategoryChange={setSelectedCategory}
+              onDurationChange={setDurationRange}
+              onReset={resetFilters}
+              activeFiltersCount={getActiveFiltersCount()}
+            />
           </div>
-          <Separator className="my-6" />
-          <CourseFilters
-            categories={categories}
-            levels={levels}
-            selectedLevel={selectedLevel}
-            selectedCategory={selectedCategory}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            onLevelChange={setSelectedLevel}
-            onCategoryChange={setSelectedCategory}
-            onDurationChange={setDurationRange}
-            onReset={resetFilters}
-            activeFiltersCount={getActiveFiltersCount()}
-          />
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-medium">
-            Showing {filteredCourses.length} course{filteredCourses.length !== 1 ? 's' : ''}
-          </h2>
-          {getActiveFiltersCount() > 0 && (
-            <button
-              onClick={resetFilters}
-              className="text-sm text-muted-foreground hover:text-primary"
-            >
-              Clear all filters
-            </button>
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="text-lg font-medium">
+              Showing {filteredCourses.length} course{filteredCourses.length !== 1 ? 's' : ''}
+            </h2>
+            {getActiveFiltersCount() > 0 && (
+              <button
+                onClick={resetFilters}
+                className="text-sm text-muted-foreground hover:text-primary"
+              >
+                Clear all filters
+              </button>
+            )}
+          </div>
+
+          {Object.entries(coursesByLevel).map(([level, levelCourses]) => 
+            levelCourses.length > 0 && (
+              <div key={level} className="mb-12">
+                <div className="mb-6 flex items-center justify-between">
+                  <h2 className="text-2xl font-bold">{level}</h2>
+                  <Badge variant="secondary" className="text-sm">
+                    {levelCourses.length} course{levelCourses.length !== 1 ? 's' : ''}
+                  </Badge>
+                </div>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {levelCourses.map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
+                </div>
+              </div>
+            )
+          )}
+
+          {filteredCourses.length === 0 && (
+            <div className="mt-8 rounded-lg border border-dashed p-8 text-center">
+              <h3 className="text-xl font-semibold mb-2">No courses found</h3>
+              <p className="text-muted-foreground">
+                Try adjusting your filters or search query
+              </p>
+              <button
+                onClick={resetFilters}
+                className="mt-4 text-sm text-primary hover:underline"
+              >
+                Reset all filters
+              </button>
+            </div>
           )}
         </div>
-
-        {Object.entries(coursesByLevel).map(([level, levelCourses]) => 
-          levelCourses.length > 0 && (
-            <div key={level} className="mb-12">
-              <div className="mb-6 flex items-center justify-between">
-                <h2 className="text-2xl font-bold">{level}</h2>
-                <Badge variant="secondary" className="text-sm">
-                  {levelCourses.length} course{levelCourses.length !== 1 ? 's' : ''}
-                </Badge>
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {levelCourses.map((course) => (
-                  <CourseCard key={course.id} course={course} />
-                ))}
-              </div>
-            </div>
-          )
-        )}
-
-        {filteredCourses.length === 0 && (
-          <div className="mt-8 rounded-lg border border-dashed p-8 text-center">
-            <h3 className="text-xl font-semibold mb-2">No courses found</h3>
-            <p className="text-muted-foreground">
-              Try adjusting your filters or search query
-            </p>
-            <button
-              onClick={resetFilters}
-              className="mt-4 text-sm text-primary hover:underline"
-            >
-              Reset all filters
-            </button>
-          </div>
-        )}
       </div>
-    </div>
+    </HydrationZustand>
   )
 }
 

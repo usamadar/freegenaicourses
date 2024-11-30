@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Clock, GraduationCap, Layout, Bookmark } from 'lucide-react'
+import { Clock, GraduationCap, Layout, Bookmark, Check } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { Course } from "@/types/course"
@@ -21,29 +21,21 @@ interface CourseCardProps {
 }
 
 export function CourseCard({ course }: CourseCardProps) {
-  const { toggleBookmark, isBookmarked, bookmarkedCourses } = useBookmarkStore()
+  const { toggleBookmark, isBookmarked, toggleComplete, isCompleted } = useBookmarkStore()
   const bookmarked = isBookmarked(course.id)
+  const completed = isCompleted(course.id)
 
-  // Add hydration state tracking
-  const [isHydrated, setIsHydrated] = useState(false)
+  const handleBookmarkClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleBookmark(course.id)
+  }
 
-  useEffect(() => {
-    setIsHydrated(true)
-  }, [])
-
-  // Debug logging
-  useEffect(() => {
-    console.log('-------- CourseCard Debug --------')
-    console.log('Course ID:', course.id)
-    console.log('Hydrated:', isHydrated)
-    console.log('Bookmarked value:', bookmarked)
-    console.log('BookmarkedCourses state:', bookmarkedCourses)
-    console.log('LocalStorage:', localStorage.getItem('course-bookmarks'))
-    console.log('--------------------------------')
-  }, [course.id, bookmarked, bookmarkedCourses, isHydrated])
-
-  // Don't show filled state until hydrated
-  const showFilled = isHydrated && bookmarked
+  const handleCompleteClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleComplete(course.id)
+  }
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-200 hover:shadow-lg">
@@ -54,18 +46,30 @@ export function CourseCard({ course }: CourseCardProps) {
           fill
           className="object-cover transition-transform duration-200 group-hover:scale-105"
         />
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-2 right-2 bg-white/80 hover:bg-white"
-          onClick={() => toggleBookmark(course.id)}
-          aria-label={showFilled ? "Remove from bookmarks" : "Add to bookmarks"}
-        >
-          <Bookmark 
-            data-bookmarked={showFilled}
-            className={`h-4 w-4 ${showFilled ? "fill-primary" : ""}`} 
-          />
-        </Button>
+        <div className="absolute top-2 right-2 flex gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="bg-white/80 hover:bg-white"
+            onClick={handleCompleteClick}
+            aria-label={completed ? "Mark as incomplete" : "Mark as complete"}
+          >
+            <Check 
+              className={`h-4 w-4 ${completed ? "text-green-600" : "text-muted-foreground"}`} 
+            />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="bg-white/80 hover:bg-white"
+            onClick={handleBookmarkClick}
+            aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
+          >
+            <Bookmark 
+              className={`h-4 w-4 ${bookmarked ? "fill-primary" : ""}`} 
+            />
+          </Button>
+        </div>
       </div>
       <CardHeader>
         <div className="flex items-center justify-between">
