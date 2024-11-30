@@ -236,7 +236,7 @@ const existingCourses: Course[] = [
     id: "greatlearning-gen-ai-youtube",
     title: "Generative AI Full Course",
     provider: "Great Learning",
-    duration: "7.7 hours",
+    duration: "8 hours",
     level: "Intermediate",
     category: "Foundational",
     description: "A comprehensive guide to Generative AI fundamentals, covering LLMs, diffusion models, GANs, and their practical applications in modern AI systems.",
