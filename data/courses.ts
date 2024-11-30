@@ -60,6 +60,18 @@ const advancedCourses: Course[] = [
     topics: ["Deep Learning", "Advanced Architectures", "Research Methods", "Applications"],
     link: "http://deeplearning.cs.cmu.edu/",
     image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&auto=format&fit=crop&q=60"
+  },
+  {
+    id: "huggingface-nlp",
+    title: "Natural Language Processing with Transformers",
+    provider: "Hugging Face",
+    duration: "54-72 hours",
+    level: "Advanced",
+    category: "Specialized",
+    description: "Master modern NLP using transformers with Hugging Face's official course. Learn to fine-tune and deploy state-of-the-art language models.",
+    topics: ["Transformers", "NLP", "Model Fine-tuning", "Hugging Face Hub"],
+    link: "https://huggingface.co/learn/nlp-course/chapter1/1",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60"
   }
 ]
 
@@ -221,18 +233,6 @@ const existingCourses: Course[] = [
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=60"
   },
   {
-    id: "huggingface-nlp",
-    title: "Natural Language Processing with Transformers",
-    provider: "Hugging Face",
-    duration: "54-72 hours",
-    level: "Intermediate",
-    category: "Specialized",
-    description: "Master modern NLP using transformers with Hugging Face's official course. Learn to fine-tune and deploy state-of-the-art language models.",
-    topics: ["Transformers", "NLP", "Model Fine-tuning", "Hugging Face Hub"],
-    link: "https://huggingface.co/learn/nlp-course/chapter1/1",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60"
-  },
-  {
     id: "greatlearning-gen-ai-youtube",
     title: "Generative AI Full Course",
     provider: "Great Learning",
@@ -255,4 +255,3 @@ export const courses: Course[] = [...advancedCourses, ...existingCourses].sort((
   }
   return levelOrder[a.level] - levelOrder[b.level]
 })
-

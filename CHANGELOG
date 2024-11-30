@@ -17,7 +17,7 @@
     title: "Natural Language Processing with Transformers",
     provider: "Hugging Face",
     duration: "54-72 hours",
-    level: "Intermediate",
+    level: "Advanced",
     category: "Specialized",
     description: "Master modern NLP using transformers with Hugging Face's official course. Learn to fine-tune and deploy state-of-the-art language models.",
     topics: ["Transformers", "NLP", "Model Fine-tuning", "Hugging Face Hub"],
