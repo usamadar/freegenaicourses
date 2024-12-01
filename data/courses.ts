@@ -71,7 +71,7 @@ const advancedCourses: Course[] = [
     description: "Master modern NLP using transformers with Hugging Face's official course. Learn to fine-tune and deploy state-of-the-art language models.",
     topics: ["Transformers", "NLP", "Model Fine-tuning", "Hugging Face Hub"],
     link: "https://huggingface.co/learn/nlp-course/chapter1/1",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60"
+    image: "https://images.unsplash.com/photo-1512572525676-f9b59951929e?q=80&w=3457&auto=format&fit=crop"
   }
 ]
 
@@ -98,7 +98,7 @@ const existingCourses: Course[] = [
     description: "Explore the world of generative AI, from basic concepts to building your own applications.",
     topics: ["Generative AI Concepts", "Prompt Engineering", "Application Development"],
     link: "https://techcommunity.microsoft.com/blog/azuredevcommunityblog/new-video-course-generative-ai-for-beginners/4184264",
-    image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&auto=format&fit=crop&q=60"
+    image: "https://learn.microsoft.com/en-us/shows/generative-ai-for-beginners/media/beg-genai-series%20title%20card.png"
   },
   {
     id: "freecodecamp-gen-ai",
@@ -230,7 +230,7 @@ const existingCourses: Course[] = [
     description: "Learn the fundamentals of generative AI, including key concepts, architectures, and real-world applications with IBM's comprehensive course.",
     topics: ["Generative AI Basics", "Foundation Models", "IBM AI Tools", "Use Cases"],
     link: "https://www.coursera.org/learn/generative-ai-foundation-models-and-platforms",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=60"
+    image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/ca/1f2b5191954fdb867790ef74e8cbe3/200859-Logo-image.png"
   },
   {
     id: "greatlearning-gen-ai-youtube",
