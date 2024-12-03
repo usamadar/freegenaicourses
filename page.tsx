@@ -8,8 +8,6 @@ import { Badge } from "@/components/ui/badge"
 import { BookmarkedCourses } from "@/components/bookmarked-courses"
 import { Separator } from "@/components/ui/separator"
 import { useBookmarkStore } from "@/lib/store"
-import { Check, Bookmark } from 'lucide-react'
-import { Button } from "@/components/ui/button"
 import { HydrationZustand } from "@/components/providers/hydration-provider"
 import { CompletedCourses } from "@/components/completed-courses"
 

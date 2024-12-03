@@ -176,12 +176,12 @@ const existingCourses: Course[] = [
     id: "coursera-gen-ai",
     title: "Generative AI Specialization",
     provider: "Coursera",
-    duration: "60-80 hours",
+    duration: "48 hours",
     level: "Intermediate",
     category: "Specialized",
     description: "A series of courses covering generative AI techniques and applications.",
-    topics: ["Generative Models", "GANs", "VAEs"],
-    link: "https://www.coursera.org/courses?query=generative%20ai",
+    topics: ["GenAI Architecture", "Model Fine-Tuning", "PyTorch", "HuggingFace Transformers"],
+    link: "https://www.coursera.org/specializations/generative-ai-engineering-with-llms",
     image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&auto=format&fit=crop&q=60"
   },
   {
@@ -198,14 +198,19 @@ const existingCourses: Course[] = [
   },
   {
     id: "openai-teachers-ai",
-    title: "AI Training for Teachers",
-    provider: "OpenAI",
-    duration: "5-7 hours",
+    title: "Generative AI for Educators & Teachers Specialization",
+    provider: "Vanderbilt University",
+    duration: "24 hours",
     level: "Beginner",
-    category: "Educational",
-    description: "A training course aimed at demystifying artificial intelligence and prompt engineering for educators.",
-    topics: ["AI Basics", "Prompt Engineering", "Educational AI"],
-    link: "https://openai.com/blog/teaching-with-ai",
+    category: "Specialized",
+    description: "A comprehensive course for educators on using ChatGPT and GPT Vision to create personalized lesson plans, educational games, and adaptive quizzes.",
+    topics: [
+      "Generative AI Fundamentals",
+      "Quiz Generation",
+      "Lesson Planning",
+      "Educational Games",
+    ],
+    link: "https://www.coursera.org/specializations/generative-ai-for-educators-teachers",
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=60"
   },
   {
