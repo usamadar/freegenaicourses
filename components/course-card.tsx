@@ -44,6 +44,26 @@ export function CourseCard({ course }: CourseCardProps) {
     e.preventDefault()
     e.stopPropagation()
     toggleComplete(course.id)
+
+    window.analytics.track('Course Completion Toggled', {
+      courseId: course.id,
+      courseTitle: course.title,
+      courseProvider: course.provider,
+      courseLevel: course.level,
+      courseCategory: course.category,
+      action: completed ? 'uncomplete' : 'complete'
+    })
+  }
+
+  const handleLearnMoreClick = () => {
+    window.analytics.track('Course Learn More Clicked', {
+      courseId: course.id,
+      courseTitle: course.title,
+      courseProvider: course.provider,
+      courseLevel: course.level,
+      courseCategory: course.category,
+      courseUrl: course.link
+    })
   }
 
   return (
@@ -133,6 +153,7 @@ export function CourseCard({ course }: CourseCardProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm font-medium text-primary hover:underline"
+          onClick={handleLearnMoreClick}
         >
           Learn More →
         </Link>
