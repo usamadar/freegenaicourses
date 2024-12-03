@@ -48,6 +48,7 @@ export function CourseCard({ course }: CourseCardProps) {
         />
         <div className="absolute top-2 right-2 flex gap-2">
           <Button
+            id="complete-button"
             variant="ghost"
             size="icon"
             className="bg-white/80 hover:bg-white"
@@ -59,6 +60,7 @@ export function CourseCard({ course }: CourseCardProps) {
             />
           </Button>
           <Button
+            id="bookmark-button"
             variant="ghost"
             size="icon"
             className="bg-white/80 hover:bg-white"
