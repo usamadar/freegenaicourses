@@ -29,6 +29,15 @@ export function CourseCard({ course }: CourseCardProps) {
     e.preventDefault()
     e.stopPropagation()
     toggleBookmark(course.id)
+    
+    window.analytics.track('Course Bookmarked', {
+      courseId: course.id,
+      courseTitle: course.title,
+      courseProvider: course.provider,
+      courseLevel: course.level,
+      courseCategory: course.category,
+      action: bookmarked ? 'unbookmark' : 'bookmark'
+    })
   }
 
   const handleCompleteClick = (e: React.MouseEvent) => {
