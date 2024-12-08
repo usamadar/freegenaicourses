@@ -99,20 +99,14 @@ export function CourseFilters({
             <div className="space-y-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Level</label>
-                <Select
-                  value={selectedLevel}
-                  onValueChange={onLevelChange}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select Level" />
+                <Select onValueChange={onLevelChange} value={selectedLevel}>
+                  <SelectTrigger className="w-full md:w-[180px]">
+                    <SelectValue placeholder="All Levels" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border-border">
                     <SelectItem value="all">All Levels</SelectItem>
                     {levels.map((level) => (
-                      <SelectItem
-                        key={level}
-                        value={level.toLowerCase()}
-                      >
+                      <SelectItem key={level} value={level}>
                         {level}
                       </SelectItem>
                     ))}
@@ -121,20 +115,14 @@ export function CourseFilters({
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Category</label>
-                <Select
-                  value={selectedCategory}
-                  onValueChange={onCategoryChange}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select Category" />
+                <Select onValueChange={onCategoryChange} value={selectedCategory}>
+                  <SelectTrigger className="w-full md:w-[180px]">
+                    <SelectValue placeholder="All Categories" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border-border">
                     <SelectItem value="all">All Categories</SelectItem>
                     {categories.map((category) => (
-                      <SelectItem
-                        key={category}
-                        value={category.toLowerCase()}
-                      >
+                      <SelectItem key={category} value={category}>
                         {category}
                       </SelectItem>
                     ))}
@@ -225,7 +213,10 @@ export function CourseFilters({
                 variant="ghost"
                 size="icon"
                 className="ml-1 h-4 w-4 hover:bg-transparent"
-                onClick={() => handleDurationChange([0, 160])}
+                onClick={() => {
+                  setDurationRange([0, 160]);
+                  onDurationChange([0, 160]);
+                }}
               >
                 ×
               </Button>

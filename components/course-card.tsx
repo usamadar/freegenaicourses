@@ -56,7 +56,8 @@ export function CourseCard({ course }: CourseCardProps) {
   }
 
   const handleLearnMoreClick = () => {
-    window.analytics.track('Course Learn More Clicked', {
+    console.log("Course Link Clicked")
+    window.analytics.track('Course Link Clicked', {
       courseId: course.id,
       courseTitle: course.title,
       courseProvider: course.provider,
@@ -67,66 +68,75 @@ export function CourseCard({ course }: CourseCardProps) {
   }
 
   return (
-    <Card className="flex flex-col overflow-hidden transition-all duration-200 hover:shadow-lg">
-      <div className="relative h-[200px] w-full group">
+    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card to-card/95 relative group">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+      <div className="relative h-[200px] w-full">
         <Image
           src={course.image}
           alt={course.title}
           fill
-          className="object-cover transition-transform duration-200 group-hover:scale-105"
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute top-2 right-2 flex gap-2">
           <Button
-            id="complete-button"
             variant="ghost"
             size="icon"
-            className="bg-white/80 hover:bg-white"
+            className={`
+              bg-white/90 backdrop-blur-sm transition-all duration-300
+              ${completed 
+                ? "bg-primary hover:bg-primary/90 text-white" 
+                : "hover:bg-primary/10 hover:text-primary"
+              }
+            `}
             onClick={handleCompleteClick}
-            aria-label={completed ? "Mark as incomplete" : "Mark as complete"}
           >
-            <Check 
-              className={`h-4 w-4 ${completed ? "text-green-600" : "text-muted-foreground"}`} 
-            />
+            <Check className={`h-4 w-4 transition-colors duration-300 ${
+              completed ? "text-white" : "text-muted-foreground"
+            }`} />
           </Button>
           <Button
-            id="bookmark-button"
             variant="ghost"
             size="icon"
-            className="bg-white/80 hover:bg-white"
+            className={`
+              bg-white/90 backdrop-blur-sm transition-all duration-300
+              ${bookmarked 
+                ? "bg-primary hover:bg-primary/90 text-white" 
+                : "hover:bg-primary/10 hover:text-primary"
+              }
+            `}
             onClick={handleBookmarkClick}
-            aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
           >
-            <Bookmark 
-              className={`h-4 w-4 ${bookmarked ? "fill-primary" : ""}`} 
-            />
+            <Bookmark className={`h-4 w-4 transition-colors duration-300 ${
+              bookmarked ? "text-white fill-white" : "text-muted-foreground"
+            }`} />
           </Button>
         </div>
       </div>
-      <CardHeader>
+      <CardHeader className="relative z-10">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Badge variant="outline">{course.category}</Badge>
-            {course.format === "Video" && (
-              <Video className="h-4 w-4 text-muted-foreground" />
-            )}
-          </div>
+          <Badge 
+            variant="outline" 
+            className="bg-primary/10 border-primary/20 text-primary hover:bg-primary/20"
+          >
+            {course.category}
+          </Badge>
           <Badge 
             variant="secondary"
             className={`
-              ${course.level === "Beginner" ? "bg-green-100 text-green-800" : ""}
-              ${course.level === "Intermediate" ? "bg-yellow-100 text-yellow-800" : ""}
-              ${course.level === "Advanced" ? "bg-red-100 text-red-800" : ""}
+              transition-colors duration-300
+              ${course.level === "Beginner" ? "bg-[hsl(var(--level-beginner))] text-white hover:opacity-90" : ""}
+              ${course.level === "Intermediate" ? "bg-[hsl(var(--level-intermediate))] text-black hover:opacity-90" : ""}
+              ${course.level === "Advanced" ? "bg-[hsl(var(--level-advanced))] text-white hover:opacity-90" : ""}
             `}
           >
             {course.level}
           </Badge>
         </div>
-        <CardTitle className="hover:text-primary">
-          <Link href={course.link} target="_blank" rel="noopener noreferrer" className="break-words">
-            {course.title}
-          </Link>
+        <CardTitle className="font-outfit text-xl font-semibold tracking-tight text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--primary))] transition-colors duration-300">
+          {course.title}
         </CardTitle>
-        <CardDescription className="flex items-center gap-1">
+        <CardDescription className="flex items-center gap-1 text-[hsl(var(--text-secondary))]">
           <GraduationCap className="h-4 w-4" />
           {course.provider}
         </CardDescription>
@@ -137,26 +147,32 @@ export function CourseCard({ course }: CourseCardProps) {
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           {course.topics.map((topic) => (
-            <Badge key={topic} variant="secondary" className="bg-primary/10">
+            <Badge 
+              key={topic} 
+              variant="secondary" 
+              className="bg-primary/5 text-primary/90 hover:bg-primary/10 transition-colors duration-300"
+            >
               {topic}
             </Badge>
           ))}
         </div>
       </CardContent>
       <CardFooter className="mt-auto flex items-center justify-between">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-2 text-sm text-[hsl(var(--text-secondary))]">
           <Clock className="h-4 w-4" />
           {course.duration}
         </div>
-        <Link
-          href={course.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-primary hover:underline"
-          onClick={handleLearnMoreClick}
+        <button
+          onClick={() => {
+            handleLearnMoreClick();
+            window.open(course.link, '_blank');
+          }}
+          className="group text-sm font-medium text-primary hover:text-primary/80"
         >
-          Learn More →
-        </Link>
+          <span className="inline-flex items-center gap-2 transform transition-all duration-300 group-hover:translate-x-1">
+            Go to Course →
+          </span>
+        </button>
       </CardFooter>
     </Card>
   )

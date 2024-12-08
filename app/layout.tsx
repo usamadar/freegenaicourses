@@ -1,10 +1,14 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Outfit } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] })
+const outfit = Outfit({ 
+  subsets: ["latin"],
+  variable: '--font-outfit',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.freegenaicourses.com'),
@@ -87,7 +91,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.className} ${outfit.variable}`} suppressHydrationWarning>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NXNTWCLP"

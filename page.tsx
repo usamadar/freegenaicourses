@@ -45,14 +45,23 @@ export default function CoursesDirectory() {
   }
 
   const filteredCourses = courses.filter((course) => {
-    const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         course.provider.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesLevel = selectedLevel === "all" || course.level.toLowerCase() === selectedLevel
-    const matchesCategory = selectedCategory === "all" || course.category.toLowerCase() === selectedCategory
-    const courseDuration = parseDuration(course.duration.replace(/[^0-9-]/g, ''))
-    const matchesDuration = courseDuration >= durationRange[0] && courseDuration <= durationRange[1]
-    
+    const matchesSearch = !searchQuery || (
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.provider.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+
+    const matchesLevel = selectedLevel === 'all' || 
+      course.level === selectedLevel
+
+    const matchesCategory = selectedCategory === 'all' || 
+      course.category === selectedCategory
+
+    const matchesDuration = !course.durationInHours || (
+      course.durationInHours >= durationRange[0] && 
+      course.durationInHours <= durationRange[1]
+    )
+
     return matchesSearch && matchesLevel && matchesCategory && matchesDuration
   })
 
@@ -67,14 +76,16 @@ export default function CoursesDirectory() {
 
   return (
     <HydrationZustand>
-      <div className="min-h-screen bg-gray-50">
-        <div className="border-b bg-white">
+      <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
+        <div className="border-b bg-white/80 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-8">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
               <div>
-                <h1 className="text-3xl font-bold">Free GenAI Course Directory</h1>
-                <p className="mt-1 text-muted-foreground">
-                  Discover high-quality generative AI courses to advance your skills
+                <h1 className="text-4xl font-bold tracking-tight">
+                  Free GenAI Course Directory
+                </h1>
+                <p className="mt-2 text-lg text-[hsl(var(--text-secondary))]">
+                  Discover high-quality free generative AI courses to advance your skills
                 </p>
               </div>
               <div className="flex gap-2">
@@ -99,9 +110,10 @@ export default function CoursesDirectory() {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-50 pointer-events-none" />
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-lg font-medium">
+            <h2 className="text-lg font-medium tracking-tight text-[hsl(var(--text-secondary))]">
               Showing {filteredCourses.length} course{filteredCourses.length !== 1 ? 's' : ''}
             </h2>
             {getActiveFiltersCount() > 0 && (
@@ -118,8 +130,13 @@ export default function CoursesDirectory() {
             levelCourses.length > 0 && (
               <div key={level} className="mb-12">
                 <div className="mb-6 flex items-center justify-between">
-                  <h2 className="text-2xl font-bold">{level}</h2>
-                  <Badge variant="secondary" className="text-sm">
+                  <h2 className="section-title text-3xl font-semibold tracking-tight">
+                    {level}
+                  </h2>
+                  <Badge 
+                    variant="secondary" 
+                    className="text-sm font-medium px-3 bg-primary/10 text-primary"
+                  >
                     {levelCourses.length} course{levelCourses.length !== 1 ? 's' : ''}
                   </Badge>
                 </div>
