@@ -1,5 +1,10 @@
 import { CategoryType } from "./category"
 
+export interface Prerequisite {
+  text: string
+  level: "essential" | "recommended" | "helpful"
+}
+
 export interface Course {
   id: string
   title: string
@@ -12,5 +17,6 @@ export interface Course {
   link: string
   image: string
   format?: string
+  prerequisites?: Prerequisite[]
 }
 

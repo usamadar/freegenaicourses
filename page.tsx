@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import { useBookmarkStore } from "@/lib/store"
 import { HydrationZustand } from "@/components/providers/hydration-provider"
 import { CompletedCourses } from "@/components/completed-courses"
+import Link from "next/link"
 
 export default function CoursesDirectory() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -89,8 +90,8 @@ export default function CoursesDirectory() {
                 </p>
               </div>
               <div className="flex gap-2">
-                <CompletedCourses courses={courses} />
                 <BookmarkedCourses courses={courses} />
+                <CompletedCourses courses={courses} />
               </div>
             </div>
             <Separator className="my-6" />

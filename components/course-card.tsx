@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Clock, GraduationCap, Layout, Bookmark, Check, Video, Info } from 'lucide-react'
+import { Clock, GraduationCap, Layout, Bookmark, Check, Video, Info, AlertCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import {
   Tooltip,
@@ -8,8 +8,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
-import { Course } from "@/types/course"
+import { Course, Prerequisite } from "@/types/course"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
@@ -23,6 +28,7 @@ import { Button } from "@/components/ui/button"
 import { useBookmarkStore } from "@/lib/store"
 import { categoryDescriptions } from "@/types/category"
 import { CategoryType } from "@/types/category"
+import { PrerequisitesLegend } from "@/components/prerequisites-legend"
 
 interface CourseCardProps {
   course: Course
@@ -76,6 +82,42 @@ export function CourseCard({ course }: CourseCardProps) {
       courseUrl: course.link
     })
   }
+
+  const renderPrerequisites = (prerequisites?: Prerequisite[]) => {
+    if (!prerequisites?.length) return null;
+
+    return (
+      <div className="mt-4 space-y-2">
+        <div className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
+          <span>Prerequisites</span>
+          <PrerequisitesLegend />
+        </div>
+        <div className="space-y-2.5">
+          {prerequisites.map((prereq, index) => (
+            <div 
+              key={index} 
+              className="grid grid-cols-[8px_1fr] gap-3 items-start"
+            >
+              <div 
+                className={`
+                  w-2 h-2 rounded-full shrink-0 mt-1.5
+                  ${prereq.level === "essential" 
+                    ? "bg-red-500" 
+                    : prereq.level === "recommended" 
+                      ? "bg-yellow-500" 
+                      : "bg-blue-500"
+                  }
+                `}
+              />
+              <p className="text-sm text-muted-foreground leading-normal">
+                {prereq.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card to-card/95 relative group">
@@ -201,6 +243,7 @@ export function CourseCard({ course }: CourseCardProps) {
             </Badge>
           ))}
         </div>
+        {course.level !== "Beginner" && renderPrerequisites(course.prerequisites)}
       </CardContent>
       <CardFooter className="mt-auto flex items-center justify-between">
         <div className="flex items-center gap-2 text-sm text-[hsl(var(--text-secondary))]">

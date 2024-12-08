@@ -35,6 +35,8 @@ interface CourseFiltersProps {
   onDurationChange: (value: [number, number]) => void
   onReset: () => void
   activeFiltersCount: number
+  onShowChange: (value: string) => void
+  showFilter: string
 }
 
 export function CourseFilters({
@@ -49,6 +51,8 @@ export function CourseFilters({
   onDurationChange,
   onReset,
   activeFiltersCount,
+  onShowChange,
+  showFilter,
 }: CourseFiltersProps) {
   const [durationRange, setDurationRange] = useState<[number, number]>([0, 160])
 
