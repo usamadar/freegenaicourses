@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useState } from 'react'
 import { Filter, SlidersHorizontal } from 'lucide-react'
+import { categoryDescriptions } from "@/types/category"
 
 interface CourseFiltersProps {
   categories: string[]
@@ -222,6 +223,13 @@ export function CourseFilters({
               </Button>
             </Badge>
           )}
+        </div>
+      )}
+      {selectedCategory && (
+        <div className="mt-2 text-sm text-muted-foreground">
+          <p className="italic">
+            {categoryDescriptions[selectedCategory as CategoryType]}
+          </p>
         </div>
       )}
     </div>

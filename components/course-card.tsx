@@ -1,7 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Clock, GraduationCap, Layout, Bookmark, Check, Video } from 'lucide-react'
+import { Clock, GraduationCap, Layout, Bookmark, Check, Video, Info } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 import { Course } from "@/types/course"
 import { Badge } from "@/components/ui/badge"
@@ -15,6 +21,8 @@ import {
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useBookmarkStore } from "@/lib/store"
+import { categoryDescriptions } from "@/types/category"
+import { CategoryType } from "@/types/category"
 
 interface CourseCardProps {
   course: Course
@@ -24,6 +32,8 @@ export function CourseCard({ course }: CourseCardProps) {
   const { toggleBookmark, isBookmarked, toggleComplete, isCompleted } = useBookmarkStore()
   const bookmarked = isBookmarked(course.id)
   const completed = isCompleted(course.id)
+
+  const [showTooltip, setShowTooltip] = useState(false)
 
   const handleBookmarkClick = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -115,12 +125,47 @@ export function CourseCard({ course }: CourseCardProps) {
       </div>
       <CardHeader className="relative z-10">
         <div className="flex items-center justify-between">
-          <Badge 
-            variant="outline" 
-            className="bg-primary/10 border-primary/20 text-primary hover:bg-primary/20"
-          >
-            {course.category}
-          </Badge>
+          <div className="flex items-center gap-1">
+            <Badge 
+              variant="outline" 
+              className="bg-primary/10 border-primary/20 text-primary hover:bg-primary/20"
+            >
+              {course.category}
+            </Badge>
+            <TooltipProvider>
+              <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-4 w-4 p-0 hover:bg-transparent touch-manipulation"
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      setShowTooltip(!showTooltip)
+                    }}
+                    onTouchEnd={(e) => {
+                      e.preventDefault()
+                      setShowTooltip(!showTooltip)
+                    }}
+                  >
+                    <Info className="h-3 w-3 text-muted-foreground hover:text-primary transition-colors" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent 
+                  side="top" 
+                  className="max-w-[300px] text-sm bg-background border shadow-md"
+                  sideOffset={5}
+                  onClick={() => setShowTooltip(false)}
+                >
+                  <div className="p-2">
+                    {categoryDescriptions[course.category]}
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
           <Badge 
             variant="secondary"
             className={`
