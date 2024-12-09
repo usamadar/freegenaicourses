@@ -229,7 +229,7 @@ export function CourseCard({ course }: CourseCardProps) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="line-clamp-3 text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           {course.description}
         </p>
         <div className="mt-4 flex flex-wrap gap-2">

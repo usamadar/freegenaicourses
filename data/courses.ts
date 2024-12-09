@@ -4,16 +4,14 @@ const beginnerCourses: Course[] = [
   {
     id: "google-gen-ai",
     title: "Introduction to Generative AI",
-    provider: "Google Cloud",
+    provider: "Google",
     duration: "22 minutes",
     level: "Beginner",
     category: "Foundational",
     description: "Learn the fundamentals of generative AI and how it differs from traditional machine learning methods.",
     topics: ["Generative AI Basics", "Applications", "Google AI Tools"],
     link: "https://www.cloudskillsboost.google/course_templates/536",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-09-15"
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: "microsoft-gen-ai",
@@ -25,9 +23,7 @@ const beginnerCourses: Course[] = [
     description: "Explore the world of generative AI, from basic concepts to building your own applications.",
     topics: ["Generative AI Concepts", "Prompt Engineering", "Application Development"],
     link: "https://techcommunity.microsoft.com/blog/azuredevcommunityblog/new-video-course-generative-ai-for-beginners/4184264",
-    image: "https://learn.microsoft.com/en-us/shows/generative-ai-for-beginners/media/beg-genai-series%20title%20card.png",
-    isNew: true,
-    addedDate: "2024-10-01"
+    image: "https://learn.microsoft.com/en-us/shows/generative-ai-for-beginners/media/beg-genai-series%20title%20card.png"
   },
   {
     id: "elements-of-ai",
@@ -39,9 +35,7 @@ const beginnerCourses: Course[] = [
     description: "An online course combining theory and practical exercises to introduce you to the basics of AI.",
     topics: ["AI Basics", "Machine Learning", "Neural Networks"],
     link: "https://www.elementsofai.com/",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-10-15"
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: "simplilearn-gen-ai",
@@ -53,9 +47,7 @@ const beginnerCourses: Course[] = [
     description: "Explore the exciting world of Generative AI with this beginner-friendly course.",
     topics: ["Generative AI Models", "AI Tools", "Neural Networks"],
     link: "https://www.simplilearn.com/free-generative-ai-course-skillup",
-    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-10-15"
+    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: "deeplearning-ai",
@@ -67,9 +59,7 @@ const beginnerCourses: Course[] = [
     description: "Understand the impact of generative AI and how to use it effectively.",
     topics: ["Generative AI Concepts", "Business Applications", "AI Tools"],
     link: "https://www.coursera.org/learn/generative-ai-for-everyone",
-    image: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-11-01"
+    image: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: "nvidia-gen-ai",
@@ -81,9 +71,7 @@ const beginnerCourses: Course[] = [
     description: "Learn generative AI concepts, applications, and the challenges and opportunities in this field.",
     topics: ["Generative AI Concepts", "Applications", "Challenges"],
     link: "https://resources.nvidia.com/en-us-generative-ai-nurture-courses/dli",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-11-15"
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: "greatlearning-gen-ai",
@@ -95,9 +83,7 @@ const beginnerCourses: Course[] = [
     description: "Unfold the captivating domain of Generative AI with this free course.",
     topics: ["Generative Models", "Machine Learning", "Neural Networks"],
     link: "https://www.mygreatlearning.com/academy/learn-for-free/courses/generative-ai-for-beginners",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-09-15"
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: "openai-teachers-ai",
@@ -114,9 +100,7 @@ const beginnerCourses: Course[] = [
       "Educational Games",
     ],
     link: "https://www.coursera.org/specializations/generative-ai-for-educators-teachers",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-09-15"
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: "ibm-gen-ai",
@@ -128,14 +112,12 @@ const beginnerCourses: Course[] = [
     description: "Learn the fundamentals of generative AI, including key concepts, architectures, and real-world applications with IBM's comprehensive course.",
     topics: ["Generative AI Basics", "Foundation Models", "IBM AI Tools", "Use Cases"],
     link: "https://www.coursera.org/learn/generative-ai-foundation-models-and-platforms",
-    image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/ca/1f2b5191954fdb867790ef74e8cbe3/200859-Logo-image.png",
-    isNew: true,
-    addedDate: "2024-09-15"
+    image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/ca/1f2b5191954fdb867790ef74e8cbe3/200859-Logo-image.png"
   },
   {
     id: "edx-ai-for-everyone",
     title: "AI for Everyone: Master the Basics",
-    provider: "IBM & edX",
+    provider: "IBM",
     duration: "4-8 hours",
     level: "Beginner",
     category: "Foundational",
@@ -149,9 +131,7 @@ const beginnerCourses: Course[] = [
       "AI Applications"
     ],
     link: "https://www.edx.org/course/artificial-intelligence-for-everyone",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop&q=60",
-    isNew: true,
-    addedDate: "2024-12-08"
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop&q=60"
   }
 ]
 
@@ -176,9 +156,7 @@ const intermediateCourses: Course[] = [
         text: "Some familiarity with AI/ML concepts (knowing what a model and dataset are)",
         level: "recommended"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "fast-ai",
@@ -204,9 +182,7 @@ const intermediateCourses: Course[] = [
         text: "General understanding of what machine learning is",
         level: "helpful"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "coursera-gen-ai",
@@ -232,9 +208,7 @@ const intermediateCourses: Course[] = [
         text: "Willingness to explore frameworks like PyTorch or TensorFlow",
         level: "helpful"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "prompt-engineering-deeplearning",
@@ -260,9 +234,7 @@ const intermediateCourses: Course[] = [
         text: "Basic understanding of prompt design concepts",
         level: "helpful"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "greatlearning-gen-ai-youtube",
@@ -289,9 +261,7 @@ const intermediateCourses: Course[] = [
         text: "Comfortable following code demos and experimenting on your own",
         level: "helpful"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "google-ml-crash-course",
@@ -324,9 +294,7 @@ const intermediateCourses: Course[] = [
         text: "Basic machine learning concepts",
         level: "helpful"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   }
 ]
 
@@ -355,9 +323,7 @@ const advancedCourses: Course[] = [
         text: "Basic math skills (linear algebra, probability) to understand the theoretical parts",
         level: "recommended"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "berkeley-cs182",
@@ -383,9 +349,7 @@ const advancedCourses: Course[] = [
         text: "Familiarity with training and tuning neural networks",
         level: "recommended"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "mit-6s965",
@@ -411,9 +375,7 @@ const advancedCourses: Course[] = [
         text: "Some exposure to optimization or deploying models in resource-limited environments",
         level: "helpful"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "cornell-cs6787",
@@ -439,9 +401,7 @@ const advancedCourses: Course[] = [
         text: "Strong coding skills and willingness to deal with system-level challenges",
         level: "recommended"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "cmu-11785",
@@ -467,9 +427,7 @@ const advancedCourses: Course[] = [
         text: "Familiarity with reading research papers and applying advanced techniques",
         level: "recommended"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "huggingface-nlp",
@@ -495,9 +453,7 @@ const advancedCourses: Course[] = [
         text: "Some experience with fine-tuning models and working with modern NLP libraries",
         level: "recommended"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   },
   {
     id: "ibm-gen-ai-data-scientists",
@@ -529,9 +485,7 @@ const advancedCourses: Course[] = [
         text: "Understanding of AI/ML concepts",
         level: "recommended"
       }
-    ],
-    isNew: true,
-    addedDate: "2024-12-08"
+    ]
   }
 ]
 

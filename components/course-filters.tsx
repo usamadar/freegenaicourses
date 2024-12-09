@@ -26,12 +26,15 @@ import { categoryDescriptions } from "@/types/category"
 interface CourseFiltersProps {
   categories: string[]
   levels: string[]
+  providers: string[]
   selectedLevel: string
   selectedCategory: string
+  selectedProvider: string
   searchQuery: string
   onSearchChange: (value: string) => void
   onLevelChange: (value: string) => void
   onCategoryChange: (value: string) => void
+  onProviderChange: (value: string) => void
   onDurationChange: (value: [number, number]) => void
   onReset: () => void
   activeFiltersCount: number
@@ -42,12 +45,15 @@ interface CourseFiltersProps {
 export function CourseFilters({
   categories,
   levels,
+  providers,
   selectedLevel,
   selectedCategory,
+  selectedProvider,
   searchQuery,
   onSearchChange,
   onLevelChange,
   onCategoryChange,
+  onProviderChange,
   onDurationChange,
   onReset,
   activeFiltersCount,
@@ -134,6 +140,22 @@ export function CourseFilters({
                   </SelectContent>
                 </Select>
               </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Provider</label>
+                <Select onValueChange={onProviderChange} value={selectedProvider}>
+                  <SelectTrigger className="w-full md:w-[180px]">
+                    <SelectValue placeholder="All Providers" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background border-border">
+                    <SelectItem value="all">All Providers</SelectItem>
+                    {providers.map((provider) => (
+                      <SelectItem key={provider} value={provider}>
+                        {provider}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
               <div className="space-y-4">
                 <label className="text-sm font-medium">Duration (hours)</label>
                 <div className="px-2">
@@ -206,6 +228,19 @@ export function CourseFilters({
                 size="icon"
                 className="ml-1 h-4 w-4 hover:bg-transparent"
                 onClick={() => onCategoryChange('all')}
+              >
+                ×
+              </Button>
+            </Badge>
+          )}
+          {selectedProvider !== 'all' && (
+            <Badge variant="secondary" className="bg-primary/10">
+              Provider: {selectedProvider}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="ml-1 h-4 w-4 hover:bg-transparent"
+                onClick={() => onProviderChange('all')}
               >
                 ×
               </Button>

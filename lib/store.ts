@@ -5,11 +5,13 @@ import { Course } from '@/types/course'
 interface BookmarkStore {
   bookmarkedCourses: { [key: string]: boolean }
   completedCourses: { [key: string]: boolean }
+  viewPreference: "grid" | "list"
   isHydrated: boolean
   toggleBookmark: (courseId: string) => void
   toggleComplete: (courseId: string) => void
   isBookmarked: (courseId: string) => boolean
   isCompleted: (courseId: string) => boolean
+  setViewPreference: (view: "grid" | "list") => void
   setHydrated: () => void
 }
 
@@ -18,6 +20,7 @@ export const useBookmarkStore = create<BookmarkStore>()(
     (set, get) => ({
       bookmarkedCourses: {},
       completedCourses: {},
+      viewPreference: "grid",
       isHydrated: false,
       toggleBookmark: (courseId: string) => {
         if (!get().isHydrated) return
@@ -37,6 +40,13 @@ export const useBookmarkStore = create<BookmarkStore>()(
             ...state.completedCourses,
             [courseId]: !state.completedCourses[courseId],
           },
+        }))
+      },
+      setViewPreference: (view: "grid" | "list") => {
+        if (!get().isHydrated) return
+        set((state) => ({
+          ...state,
+          viewPreference: view,
         }))
       },
       isBookmarked: (courseId: string) => get().isHydrated && !!get().bookmarkedCourses[courseId],
