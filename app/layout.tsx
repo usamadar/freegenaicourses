@@ -60,6 +60,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.freegenaicourses.com",
   },
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: {
+      url: "/apple-touch-icon.png",
+    },
+  },
 }
 
 export default function RootLayout({

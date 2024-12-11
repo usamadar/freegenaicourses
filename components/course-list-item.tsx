@@ -2,6 +2,7 @@ import { Course } from "@/types/course"
 import { Badge } from "@/components/ui/badge"
 import { Clock, GraduationCap } from 'lucide-react'
 import Link from "next/link"
+import { LevelBadge } from "@/components/level-badge"
 
 interface CourseListItemProps {
   course: Course
@@ -17,7 +18,7 @@ export function CourseListItem({ course }: CourseListItemProps) {
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <Badge>{course.level}</Badge>
+            <LevelBadge level={course.level} />
             <Badge variant="outline">{course.category}</Badge>
           </div>
           <h3 className="font-medium text-lg mb-1 truncate">{course.title}</h3>

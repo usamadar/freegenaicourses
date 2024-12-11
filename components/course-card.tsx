@@ -29,6 +29,7 @@ import { useBookmarkStore } from "@/lib/store"
 import { categoryDescriptions } from "@/types/category"
 import { CategoryType } from "@/types/category"
 import { PrerequisitesLegend } from "@/components/prerequisites-legend"
+import { LevelBadge } from "@/components/level-badge"
 
 interface CourseCardProps {
   course: Course
@@ -168,12 +169,10 @@ export function CourseCard({ course }: CourseCardProps) {
       <CardHeader className="relative z-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
-            <Badge 
-              variant="outline" 
-              className="bg-primary/10 border-primary/20 text-primary hover:bg-primary/20"
-            >
-              {course.category}
-            </Badge>
+            <div className="flex items-center gap-2">
+              <LevelBadge level={course.level} />
+              <Badge variant="outline">{course.category}</Badge>
+            </div>
             <TooltipProvider>
               <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
                 <TooltipTrigger asChild>
@@ -208,17 +207,6 @@ export function CourseCard({ course }: CourseCardProps) {
               </Tooltip>
             </TooltipProvider>
           </div>
-          <Badge 
-            variant="secondary"
-            className={`
-              transition-colors duration-300
-              ${course.level === "Beginner" ? "bg-[hsl(var(--level-beginner))] text-white hover:opacity-90" : ""}
-              ${course.level === "Intermediate" ? "bg-[hsl(var(--level-intermediate))] text-black hover:opacity-90" : ""}
-              ${course.level === "Advanced" ? "bg-[hsl(var(--level-advanced))] text-white hover:opacity-90" : ""}
-            `}
-          >
-            {course.level}
-          </Badge>
         </div>
         <CardTitle className="font-outfit text-xl font-semibold tracking-tight text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--primary))] transition-colors duration-300">
           {course.title}
