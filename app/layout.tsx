@@ -16,9 +16,24 @@ export const metadata: Metadata = {
     default: "Free Gen AI Courses | Learn Generative AI and Prompt Engineering",
     template: "%s | Free Gen AI Courses"
   },
-  description: "Discover 15+ free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford. Learn prompt engineering, LLMs, and AI applications.",
-  keywords: ["generative AI courses", "free AI courses", "prompt engineering", "ChatGPT courses", "AI learning", "machine learning courses", "DeepLearning.AI", "OpenAI courses"],
-  authors: [{ name: "Free Gen AI Courses Directory" }],
+  description: "Discover our growing collection of free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford. Learn prompt engineering, LLMs, and AI applications.",
+  keywords: [
+    "generative AI courses",
+    "free AI courses", 
+    "prompt engineering",
+    "ChatGPT courses",
+    "AI learning",
+    "machine learning courses",
+    "DeepLearning.AI",
+    "OpenAI courses",
+    "artificial intelligence education",
+    "LLM training",
+    "AI certification"
+  ],
+  authors: [{ 
+    name: "Free Gen AI Courses Directory",
+    url: "https://www.freegenaicourses.com"
+  }],
   creator: "Free Gen AI Courses Directory",
   publisher: "Free Gen AI Courses Directory",
   formatDetection: {
@@ -31,19 +46,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.freegenaicourses.com",
     title: "Free Gen AI Courses | Learn Generative AI and Prompt Engineering",
-    description: "Discover 15+ free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford. Learn prompt engineering, LLMs, and AI applications.",
+    description: "Discover our growing collection of free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford. Learn prompt engineering, LLMs, and AI applications.",
     siteName: "Free Gen AI Courses",
+    alternateLocale: ["en_GB"],
     images: [{
       url: "https://www.freegenaicourses.com/og-image.jpg",
       width: 1200,
       height: 630,
-      alt: "Free Gen AI Courses Directory"
+      alt: "Free Gen AI Courses Directory",
+      type: "image/jpeg"
     }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Free Gen AI Courses | Learn Generative AI and Prompt Engineering",
-    description: "Discover 15+ free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford.",
+    description: "Discover our growing collection of free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford.",
     images: ["https://www.freegenaicourses.com/og-image.jpg"],
   },
   robots: {
@@ -74,6 +91,17 @@ export const metadata: Metadata = {
     apple: {
       url: "/apple-touch-icon.png",
     },
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
+  verification: {
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
+    bing: 'your-bing-verification-code'
   },
 }
 
@@ -134,6 +162,23 @@ export default function RootLayout({
                   "urlTemplate": "https://www.freegenaicourses.com?search={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Free Gen AI Courses Directory",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://www.freegenaicourses.com/logo.png"
+                }
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "AI learners and professionals"
               }
             })
           }}
