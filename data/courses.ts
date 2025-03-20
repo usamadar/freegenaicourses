@@ -486,6 +486,32 @@ const advancedCourses: Course[] = [
         level: "recommended"
       }
     ]
+  },
+  {
+    id: "huggingface-agents",
+    title: "AI Agents Course",
+    provider: "Hugging Face",
+    duration: "18-24 hours",
+    level: "Advanced",
+    category: "Specialized",
+    description: "Learn how to build and deploy AI agents using modern tools and frameworks. This comprehensive course covers agent architectures, tools integration, and practical applications. Each unit is designed to be completed in 1 week with 3-4 hours of work per week.",
+    topics: ["AI Agents", "Agent Architectures", "Tools Integration", "Deployment"],
+    link: "https://huggingface.co/learn/agents-course/unit0/introduction",
+    image: "https://plus.unsplash.com/premium_photo-1725985758251-b49c6b581d17?w=800&auto=format&fit=crop&q=60",
+    prerequisites: [
+      {
+        text: "Strong Python programming skills",
+        level: "essential"
+      },
+      {
+        text: "Understanding of machine learning and deep learning concepts",
+        level: "essential"
+      },
+      {
+        text: "Experience with modern AI frameworks and APIs",
+        level: "recommended"
+      }
+    ]
   }
 ]
 
