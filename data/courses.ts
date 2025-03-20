@@ -132,6 +132,18 @@ const beginnerCourses: Course[] = [
     ],
     link: "https://www.edx.org/course/artificial-intelligence-for-everyone",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop&q=60"
+  },
+  {
+    id: "coursera-gen-ai-business",
+    title: "Generative AI for Business and Career Growth",
+    provider: "Coursera",
+    duration: "4-6 hours",
+    level: "Beginner",
+    category: "Foundational",
+    description: "Learn how to leverage generative AI to enhance your business skills and career prospects. This course covers practical applications of AI in business contexts.",
+    topics: ["Business Applications", "Career Development", "AI Tools", "Business Strategy"],
+    link: "https://www.coursera.org/learn/generative-ai-business-and-career-growth",
+    image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=800&auto=format&fit=crop&q=60"
   }
 ]
 
