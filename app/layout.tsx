@@ -3,107 +3,13 @@ import { Inter, Outfit } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
+import { metadata } from './metadata'
 
 const inter = Inter({ subsets: ["latin"] })
 const outfit = Outfit({ 
   subsets: ["latin"],
   variable: '--font-outfit',
 })
-
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.freegenaicourses.com'),
-  title: {
-    default: "Free Gen AI Courses | Learn Generative AI and Prompt Engineering",
-    template: "%s | Free Gen AI Courses"
-  },
-  description: "Discover our growing collection of free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford. Learn prompt engineering, LLMs, and AI applications.",
-  keywords: [
-    "generative AI courses",
-    "free AI courses", 
-    "prompt engineering",
-    "ChatGPT courses",
-    "AI learning",
-    "machine learning courses",
-    "DeepLearning.AI",
-    "OpenAI courses",
-    "artificial intelligence education",
-    "LLM training",
-    "AI certification"
-  ],
-  authors: [{ 
-    name: "Free Gen AI Courses Directory",
-    url: "https://www.freegenaicourses.com"
-  }],
-  creator: "Free Gen AI Courses Directory",
-  publisher: "Free Gen AI Courses Directory",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://www.freegenaicourses.com",
-    title: "Free Gen AI Courses | Learn Generative AI and Prompt Engineering",
-    description: "Discover our growing collection of free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford. Learn prompt engineering, LLMs, and AI applications.",
-    siteName: "Free Gen AI Courses",
-    alternateLocale: ["en_GB"],
-    images: [{
-      url: "https://www.freegenaicourses.com/og-image.jpg",
-      width: 1200,
-      height: 630,
-      alt: "Free Gen AI Courses Directory",
-      type: "image/jpeg"
-    }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Free Gen AI Courses | Learn Generative AI and Prompt Engineering",
-    description: "Discover our growing collection of free, high-quality Generative AI courses from top providers like DeepLearning.AI, Google, Microsoft, and Stanford.",
-    images: ["https://www.freegenaicourses.com/og-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: "https://www.freegenaicourses.com",
-  },
-  icons: {
-    icon: [
-      {
-        url: "/favicon.ico",
-        sizes: "any",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: {
-      url: "/apple-touch-icon.png",
-    },
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-    bing: 'your-bing-verification-code'
-  },
-}
 
 export default function RootLayout({
   children,
