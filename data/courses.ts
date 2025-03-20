@@ -149,6 +149,32 @@ const beginnerCourses: Course[] = [
 
 const intermediateCourses: Course[] = [
   {
+    id: "analyticsvidhya-deepseek",
+    title: "DeepSeek from Scratch",
+    provider: "Analytics Vidhya",
+    duration: "60 minutes",
+    level: "Intermediate",
+    category: "Specialized",
+    description: "Learn DeepSeek's input understanding, self-attention, multi-head latent attention, routing, visualization, and RoPE with Tom Yeh. Perfect for both beginners and advanced learners.",
+    topics: ["DeepSeek Architecture", "Self-Attention", "Multi-head Latent Attention", "Routing", "Visualization", "RoPE"],
+    link: "https://courses.analyticsvidhya.com/courses/deepseek-from-scratch",
+    image: "https://images.unsplash.com/photo-1738052380822-3dfcd949a53f?w=800&auto=format&fit=crop&q=60",
+    prerequisites: [
+      {
+        text: "Basic understanding of machine learning and deep learning concepts",
+        level: "essential"
+      },
+      {
+        text: "Familiarity with transformer architectures",
+        level: "recommended"
+      },
+      {
+        text: "Basic Python programming experience",
+        level: "helpful"
+      }
+    ]
+  },
+  {
     id: "freecodecamp-gen-ai",
     title: "Learn Generative AI in 30 Hours",
     provider: "freeCodeCamp",
