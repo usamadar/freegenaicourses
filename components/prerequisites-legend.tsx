@@ -6,18 +6,28 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 export function PrerequisitesLegend() {
+  const [open, setOpen] = useState(false)
+
   return (
     <div className="relative z-20">
       <TooltipProvider>
-        <Tooltip>
+        <Tooltip open={open} onOpenChange={setOpen}>
           <TooltipTrigger asChild>
             <Button
               variant="ghost"
               size="icon"
               className="h-4 w-4 p-0 hover:bg-transparent touch-manipulation"
               type="button"
+              tabIndex={0}
+              aria-label="Show prerequisites legend"
+              onClick={e => {
+                e.stopPropagation();
+                setOpen((prev) => !prev)
+              }}
+              onBlur={() => setOpen(false)}
             >
               <Info className="h-3 w-3 text-muted-foreground hover:text-primary transition-colors" />
             </Button>
@@ -26,6 +36,7 @@ export function PrerequisitesLegend() {
             side="top" 
             className="max-w-[300px] text-sm bg-background border shadow-md z-50"
             sideOffset={5}
+            onClick={() => setOpen(false)}
           >
             <div className="space-y-3 p-1">
               <p className="font-medium text-sm text-foreground">Prerequisites Level:</p>
