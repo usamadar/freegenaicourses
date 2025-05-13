@@ -19,7 +19,7 @@ interface CourseListItemProps {
 
 export function CourseListItem({ course }: CourseListItemProps) {
   return (
-    <div className="rounded-2xl border bg-card shadow-sm p-4 flex flex-col gap-3 w-full max-w-xl mx-auto">
+    <div className="rounded-2xl border bg-card shadow-sm p-4 flex flex-col gap-3 w-full">
       {/* Badges and Prereqs */}
       <div className="flex flex-wrap gap-2 items-center mb-1">
         <LevelBadge level={course.level} />
