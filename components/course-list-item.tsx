@@ -41,8 +41,8 @@ export function CourseListItem({ course }: CourseListItemProps) {
               <div className="mt-6 space-y-4">
                 <div className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
                   <span>Required Knowledge</span>
-                  <PrerequisitesLegend />
                 </div>
+                <PrerequisitesLegend />
                 <div className="space-y-4">
                   {course.prerequisites.map((prereq, index) => (
                     <div 
