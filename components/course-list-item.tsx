@@ -10,7 +10,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
 import { PrerequisitesLegend } from "@/components/prerequisites-legend"
 
 interface CourseListItemProps {
@@ -27,14 +26,13 @@ export function CourseListItem({ course }: CourseListItemProps) {
         {course.prerequisites && course.prerequisites.length > 0 && (
           <Sheet>
             <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="sm"
-                className="flex items-center gap-1 px-2 py-1 text-xs border-primary/40"
+              <button
+                type="button"
+                className="flex items-center gap-1 px-2 py-1 text-xs border border-primary/40 rounded-md bg-background hover:bg-primary/5 text-primary"
               >
                 <ListChecks className="h-4 w-4 text-primary" />
                 Prereqs
-              </Button>
+              </button>
             </SheetTrigger>
             <SheetContent side="bottom" className="h-[70vh] max-w-full w-full rounded-t-2xl p-6">
               <SheetHeader>
@@ -100,16 +98,14 @@ export function CourseListItem({ course }: CourseListItemProps) {
           </Badge>
         ))}
       </div>
-      {/* Go to Course Button - right aligned */}
-      <div className="flex justify-end mt-4">
+      {/* Go to Course Link - right aligned, minimal space */}
+      <div className="flex justify-end">
         <Link
           href={course.link}
           target="_blank"
-          tabIndex={-1}
+          className="text-primary font-semibold text-sm hover:underline flex items-center gap-1 px-2 py-1"
         >
-          <Button className="py-2 px-6 text-base font-semibold rounded-xl" variant="default">
-            Go to Course &rarr;
-          </Button>
+          Go to Course <span aria-hidden>→</span>
         </Link>
       </div>
     </div>
