@@ -100,17 +100,18 @@ export function CourseListItem({ course }: CourseListItemProps) {
           </Badge>
         ))}
       </div>
-      {/* Go to Course Button */}
-      <Link
-        href={course.link}
-        target="_blank"
-        className="mt-2"
-        tabIndex={-1}
-      >
-        <Button className="w-full py-2 text-base font-semibold rounded-xl" variant="default">
-          Go to Course &rarr;
-        </Button>
-      </Link>
+      {/* Go to Course Button - right aligned */}
+      <div className="flex justify-end mt-4">
+        <Link
+          href={course.link}
+          target="_blank"
+          tabIndex={-1}
+        >
+          <Button className="py-2 px-6 text-base font-semibold rounded-xl" variant="default">
+            Go to Course &rarr;
+          </Button>
+        </Link>
+      </div>
     </div>
   )
 } 
