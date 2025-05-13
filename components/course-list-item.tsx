@@ -1,13 +1,15 @@
 import { Course } from "@/types/course"
 import { Badge } from "@/components/ui/badge"
-import { Clock, GraduationCap, Info, ListChecks } from 'lucide-react'
+import { Clock, GraduationCap, ListChecks } from 'lucide-react'
 import Link from "next/link"
 import { LevelBadge } from "@/components/level-badge"
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { PrerequisitesLegend } from "@/components/prerequisites-legend"
 
@@ -17,39 +19,33 @@ interface CourseListItemProps {
 
 export function CourseListItem({ course }: CourseListItemProps) {
   return (
-    <Link
-      href={course.link}
-      target="_blank"
-      className="block p-4 rounded-lg border bg-card hover:shadow-md transition-all hover:bg-accent/5"
-    >
+    <div className="block p-4 rounded-lg border bg-card hover:shadow-md transition-all hover:bg-accent/5">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <LevelBadge level={course.level} />
             <Badge variant="outline">{course.category}</Badge>
             {course.prerequisites && course.prerequisites.length > 0 && (
-              <Popover>
-                <PopoverTrigger asChild>
+              <Sheet>
+                <SheetTrigger asChild>
                   <Button
                     variant="ghost"
                     size="icon"
                     className="h-4 w-4 p-0 hover:bg-transparent"
-                    onClick={(e) => e.preventDefault()}
                   >
                     <ListChecks className="h-3 w-3 text-muted-foreground hover:text-primary transition-colors" />
                   </Button>
-                </PopoverTrigger>
-                <PopoverContent 
-                  side="right" 
-                  className="w-[300px] p-4"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <div className="space-y-2">
+                </SheetTrigger>
+                <SheetContent side="bottom" className="h-[80vh]">
+                  <SheetHeader>
+                    <SheetTitle>Course Prerequisites</SheetTitle>
+                  </SheetHeader>
+                  <div className="mt-6 space-y-4">
                     <div className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
-                      <span>Prerequisites</span>
+                      <span>Required Knowledge</span>
                       <PrerequisitesLegend />
                     </div>
-                    <div className="space-y-2.5">
+                    <div className="space-y-4">
                       {course.prerequisites.map((prereq, index) => (
                         <div 
                           key={index} 
@@ -73,8 +69,8 @@ export function CourseListItem({ course }: CourseListItemProps) {
                       ))}
                     </div>
                   </div>
-                </PopoverContent>
-              </Popover>
+                </SheetContent>
+              </Sheet>
             )}
           </div>
           <h3 className="font-medium text-lg mb-1 truncate">{course.title}</h3>
@@ -101,7 +97,16 @@ export function CourseListItem({ course }: CourseListItemProps) {
             ))}
           </div>
         </div>
+        <Link
+          href={course.link}
+          target="_blank"
+          className="text-sm font-medium text-primary hover:text-primary/80"
+        >
+          <span className="inline-flex items-center gap-2 transform transition-all duration-300 hover:translate-x-1">
+            Go to Course →
+          </span>
+        </Link>
       </div>
-    </Link>
+    </div>
   )
 } 
