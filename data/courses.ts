@@ -144,6 +144,19 @@ const beginnerCourses: Course[] = [
     topics: ["Business Applications", "Career Development", "AI Tools", "Business Strategy"],
     link: "https://www.coursera.org/learn/generative-ai-business-and-career-growth",
     image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=800&auto=format&fit=crop&q=60"
+  },
+  {
+    id: "ucdavis-ai-ethics",
+    title: "Big Data, Artificial Intelligence, and Ethics",
+    provider: "University of California, Davis (Coursera)",
+    duration: "~9 hours (4 modules):contentReference[oaicite:31]{index=31}:contentReference[oaicite:32]{index=32}",
+    level: "Beginner",
+    category: "Specialized",
+    description: "An introductory MOOC exploring the intersection of big data, AI, and ethical issues:contentReference[oaicite:33]{index=33}. It provides context on how the digital data explosion (with 99% of information digitized) creates unprecedented opportunities for insight, but also raises serious ethical questions:contentReference[oaicite:34]{index=34}. Students learn about the promises and limitations of big data and machine learning, and why **ethical considerations** (like privacy, bias, and consent) are crucial when leveraging AI on human data. Hands-on labs include using IBM Watson’s AI services to analyze personalities from text and experimenting with Google’s Teachable Machine, illustrating both the power and the limitations of modern AI:contentReference[oaicite:35]{index=35}:contentReference[oaicite:36]{index=36}. Ultimately, the course challenges learners to think critically about the social implications of AI.:contentReference[oaicite:37]{index=37}",
+    topics: ["Big data opportunities & limitations", "AI case studies (e.g. IBM Watson)", "Machine learning basics and “teachable” models", "Ethical principles in AI research", "Privacy, bias, and societal impacts"],
+    link: "https://www.coursera.org/learn/big-data-ai-ethics",
+    image: "https://cdn.pixabay.com/photo/2024/02/13/20/14/ai-generated-8571834_1280.jpg",
+    prerequisites: []
   }
 ]
 
@@ -333,6 +346,26 @@ const intermediateCourses: Course[] = [
         level: "helpful"
       }
     ]
+  },
+  {
+    id: "deeplearning-llmops",
+    title: "LLMOps: Large Language Model Operations",
+    provider: "DeepLearning.AI + Google Cloud",
+    duration: "~1 hour 20 minutes (short course):contentReference[oaicite:26]{index=26}",
+    level: "Intermediate",
+    category: "Systems",
+    description: "A **practitioner-focused** short course on operationalizing LLMs in real-world applications:contentReference[oaicite:27]{index=27}. Developed in collaboration with Google Cloud and taught by an ML engineer at Google, it walks through the end-to-end *LLMOps pipeline*: from preparing and versioning training data, to performing supervised fine-tuning of a model, deploying the customized LLM, and monitoring it for safety:contentReference[oaicite:28]{index=28}:contentReference[oaicite:29]{index=29}. Learners get hands-on experience with tools like BigQuery (for data preprocessing), Kubeflow Pipelines (for automation), and techniques for responsible AI (safety score monitoring):contentReference[oaicite:30]{index=30}. By course end, you’ll know how to train and deploy a domain-specific LLM and manage it in production.",
+    topics: ["Data preprocessing for LLM fine-tuning", "Supervised instruction tuning pipeline", "Model and data versioning (MLOps best practices)", "Automating training with pipelines (Kubeflow)", "Deploying and monitoring an LLM", "Responsible AI & safety filtering"],
+    link: "https://learn.deeplearning.ai/llmops",
+    image: "https://home-wordpress.deeplearning.ai/wp-content/uploads/2024/01/background-llmops.png",
+    prerequisites: [ {
+      text: "Basic ML workflow knowledge",
+      level: "essential"
+    },
+    {
+      text: "Python proficiency",
+      level: "essential"
+    }]
   }
 ]
 
@@ -548,6 +581,28 @@ const advancedCourses: Course[] = [
       {
         text: "Experience with modern AI frameworks and APIs",
         level: "recommended"
+      }
+    ]
+  },
+  {
+    id: "fsdl-ai-product",
+    title: "Full Stack Deep Learning",
+    provider: "Full Stack Deep Learning (Berkeley/Open source)",
+    duration: "Bootcamp-style course (approx. 20+ hours of content)",
+    level: "Advanced",
+    category: "Systems",
+    description: "An **advanced course** that teaches how to build and deploy real-world AI products, covering the “full stack” of machine learning in production:contentReference[oaicite:49]{index=49}. Originally run as an intensive bootcamp at UC Berkeley, its materials (lectures, labs) are freely available. The curriculum spans the entire ML lifecycle: defining a problem, selecting and training models, managing data and experiments, deploying models as services, and maintaining/monitoring them in production:contentReference[oaicite:50]{index=50}. It emphasizes industry best practices and toolchains (from experiment tracking to CI/CD for ML) and features instructors and guest lectures from leading AI organizations:contentReference[oaicite:51]{index=51}. By the end, you’ll understand how to take a complex model from research to a scalable, reliable application in production.",
+    topics: ["Problem scoping & data pipelines", "Model training and hyperparameter tuning", "MLOps tools (experiment tracking, CI/CD)", "Deploying models (APIs, infrastructure)", "Monitoring, testing, and iterating on ML systems", "AI product case studies"],
+    link: "https://fullstackdeeplearning.com/",
+    image: "https://cdn.pixabay.com/photo/2024/10/01/15/54/ai-generated-9088888_1280.jpg",
+    prerequisites: [
+      {
+        text: "Solid understanding of machine learning",
+        level: "essential"
+      },
+      {
+        text: "Experience with training deep learning models", 
+        level: "essential"
       }
     ]
   }
