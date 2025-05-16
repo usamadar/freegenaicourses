@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Checkbox } from "@/components/ui/checkbox"
 import { useState } from 'react'
 import { Filter, SlidersHorizontal } from 'lucide-react'
 import { categoryDescriptions } from "@/types/category"
@@ -27,14 +28,17 @@ interface CourseFiltersProps {
   categories: string[]
   levels: string[]
   providers: string[]
+  topics: string[]
   selectedLevel: string
   selectedCategory: string
   selectedProvider: string
+  selectedTopics: string[]
   searchQuery: string
   onSearchChange: (value: string) => void
   onLevelChange: (value: string) => void
   onCategoryChange: (value: string) => void
   onProviderChange: (value: string) => void
+  onTopicsChange: (value: string[]) => void
   onDurationChange: (value: [number, number]) => void
   onReset: () => void
   activeFiltersCount: number
@@ -46,14 +50,17 @@ export function CourseFilters({
   categories,
   levels,
   providers,
+  topics,
   selectedLevel,
   selectedCategory,
   selectedProvider,
+  selectedTopics,
   searchQuery,
   onSearchChange,
   onLevelChange,
   onCategoryChange,
   onProviderChange,
+  onTopicsChange,
   onDurationChange,
   onReset,
   activeFiltersCount,
@@ -73,6 +80,17 @@ export function CourseFilters({
     }
     setDurationRange(newRange)
     onDurationChange(newRange)
+  }
+
+  const handleTopicToggle = (
+    topic: string,
+    checked: boolean | string
+  ) => {
+    if (checked) {
+      onTopicsChange([...selectedTopics, topic])
+    } else {
+      onTopicsChange(selectedTopics.filter(t => t !== topic))
+    }
   }
 
   return (
@@ -155,6 +173,22 @@ export function CourseFilters({
                     ))}
                   </SelectContent>
                 </Select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Topics</label>
+                <div className="grid max-h-40 grid-cols-2 gap-2 overflow-y-auto rounded-md border p-2">
+                  {topics.map((topic) => (
+                    <label key={topic} className="flex items-center gap-2 text-sm">
+                      <Checkbox
+                        checked={selectedTopics.includes(topic)}
+                        onCheckedChange={(checked) =>
+                          handleTopicToggle(topic, Boolean(checked))
+                        }
+                      />
+                      {topic}
+                    </label>
+                  ))}
+                </div>
               </div>
               <div className="space-y-4">
                 <label className="text-sm font-medium">Duration (hours)</label>
@@ -246,6 +280,19 @@ export function CourseFilters({
               </Button>
             </Badge>
           )}
+          {selectedTopics.map((topic) => (
+            <Badge key={topic} variant="secondary" className="bg-primary/10">
+              Topic: {topic}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="ml-1 h-4 w-4 hover:bg-transparent"
+                onClick={() => onTopicsChange(selectedTopics.filter(t => t !== topic))}
+              >
+                ×
+              </Button>
+            </Badge>
+          ))}
           {(durationRange[0] > 0 || durationRange[1] < 160) && (
             <Badge variant="secondary" className="bg-primary/10">
               Duration: {durationRange[0]}h - {durationRange[1]}h

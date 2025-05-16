@@ -19,6 +19,7 @@ export default function CoursesDirectory() {
   const [selectedLevel, setSelectedLevel] = useState("all")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedProvider, setSelectedProvider] = useState("all")
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const [durationRange, setDurationRange] = useState<[number, number]>([0, 160])
   const { isBookmarked, isCompleted, isHydrated, viewPreference, setViewPreference } = useBookmarkStore()
   const [view, setView] = useState<"grid" | "list">(viewPreference)
@@ -39,6 +40,7 @@ export default function CoursesDirectory() {
     if (selectedLevel !== "all") count++
     if (selectedCategory !== "all") count++
     if (selectedProvider !== "all") count++
+    if (selectedTopics.length > 0) count++
     if (durationRange[0] > 0 || durationRange[1] < 160) count++
     return count
   }
@@ -47,6 +49,7 @@ export default function CoursesDirectory() {
     setSelectedLevel("all")
     setSelectedCategory("all")
     setSelectedProvider("all")
+    setSelectedTopics([])
     setDurationRange([0, 160])
     setSearchQuery("")
   }
@@ -67,18 +70,22 @@ export default function CoursesDirectory() {
     const matchesProvider = selectedProvider === 'all' ||
       course.provider === selectedProvider
 
+    const matchesTopics = selectedTopics.length === 0 ||
+      course.topics.some(topic => selectedTopics.includes(topic))
+
     const courseDuration = parseDuration(course.duration)
     const matchesDuration = (
       courseDuration >= durationRange[0] && 
       courseDuration <= durationRange[1]
     )
 
-    return matchesSearch && matchesLevel && matchesCategory && matchesProvider && matchesDuration
+    return matchesSearch && matchesLevel && matchesCategory && matchesProvider && matchesDuration && matchesTopics
   })
 
   const categories = Array.from(new Set(courses.map((course) => course.category)))
   const levels = Array.from(new Set(courses.map((course) => course.level)))
   const providers = Array.from(new Set(courses.map((course) => course.provider)))
+  const topics = Array.from(new Set(courses.flatMap((course) => course.topics)))
 
   const coursesByLevel = {
     Beginner: filteredCourses.filter(course => course.level === "Beginner"),
@@ -121,14 +128,17 @@ export default function CoursesDirectory() {
               categories={categories}
               levels={levels}
               providers={providers}
+              topics={topics}
               selectedLevel={selectedLevel}
               selectedCategory={selectedCategory}
               selectedProvider={selectedProvider}
+              selectedTopics={selectedTopics}
               searchQuery={searchQuery}
               onSearchChange={setSearchQuery}
               onLevelChange={setSelectedLevel}
               onCategoryChange={setSelectedCategory}
               onProviderChange={setSelectedProvider}
+              onTopicsChange={setSelectedTopics}
               onDurationChange={setDurationRange}
               onReset={resetFilters}
               activeFiltersCount={getActiveFiltersCount()}
