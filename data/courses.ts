@@ -153,7 +153,7 @@ const beginnerCourses: Course[] = [
     level: "Beginner",
     category: "Specialized",
     description: "An introductory course exploring the intersection of big data, AI, and ethical issues. Learn about opportunities and limitations of AI/ML while considering crucial ethical aspects like privacy and bias. Includes hands-on labs with IBM Watson and Google's Teachable Machine.",
-    topics: ["Big data opportunities & limitations", "AI case studies (e.g. IBM Watson)", "Machine learning basics and “teachable” models", "Ethical principles in AI research", "Privacy, bias, and societal impacts"],
+    topics: ["Big Data", "AI Case Studies", "Machine Learning", "AI Ethics", "Privacy & Bias"],
     link: "https://www.coursera.org/learn/big-data-ai-ethics",
     image: "https://cdn.pixabay.com/photo/2024/02/13/20/14/ai-generated-8571834_1280.jpg",
     prerequisites: []
@@ -355,7 +355,7 @@ const intermediateCourses: Course[] = [
     level: "Intermediate",
     category: "Systems",
     description: "A hands-on course teaching how to operationalize LLMs in production. Learn to prepare training data, fine-tune models, deploy customized LLMs, and monitor for safety using tools like BigQuery and Kubeflow Pipelines. Developed with Google Cloud to teach practical LLMOps skills.",
-    topics: ["Data preprocessing for LLM fine-tuning", "Supervised instruction tuning pipeline", "Model and data versioning (MLOps best practices)", "Automating training with pipelines (Kubeflow)", "Deploying and monitoring an LLM", "Responsible AI & safety filtering"],
+    topics: ["Data preprocessing", "Model fine-tuning", "MLOps practices", "Pipeline automation", "LLM deployment", "AI safety"],
     link: "https://learn.deeplearning.ai/llmops",
     image: "https://home-wordpress.deeplearning.ai/wp-content/uploads/2024/01/background-llmops.png",
     prerequisites: [ {
@@ -593,7 +593,7 @@ const advancedCourses: Course[] = [
     level: "Advanced",
     category: "Systems",
     description: "An advanced course teaching how to build and deploy real-world AI products, covering the full ML lifecycle from problem definition to production deployment. Learn industry best practices, MLOps toolchains, and how to create scalable ML applications. Originally run at UC Berkeley, all materials are freely available online.",
-    topics: ["Problem scoping & data pipelines", "Model training and hyperparameter tuning", "MLOps tools (experiment tracking, CI/CD)", "Deploying models (APIs, infrastructure)", "Monitoring, testing, and iterating on ML systems", "AI product case studies"],
+    topics: ["ML Lifecycle", "MLOps", "Model Deployment", "System Monitoring", "Product Development"],
     link: "https://fullstackdeeplearning.com/",
     image: "https://cdn.pixabay.com/photo/2024/10/01/15/54/ai-generated-9088888_1280.jpg",
     prerequisites: [
