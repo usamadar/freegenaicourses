@@ -351,7 +351,7 @@ const intermediateCourses: Course[] = [
     id: "deeplearning-llmops",
     title: "LLMOps: Large Language Model Operations",
     provider: "DeepLearning.AI + Google Cloud",
-    duration: "~1 hour 20 minutes (short course):contentReference[oaicite:26]{index=26}",
+    duration: "~1 hour 20 minutes (short course)",
     level: "Intermediate",
     category: "Systems",
     description: "A **practitioner-focused** short course on operationalizing LLMs in real-world applications:contentReference[oaicite:27]{index=27}. Developed in collaboration with Google Cloud and taught by an ML engineer at Google, it walks through the end-to-end *LLMOps pipeline*: from preparing and versioning training data, to performing supervised fine-tuning of a model, deploying the customized LLM, and monitoring it for safety:contentReference[oaicite:28]{index=28}:contentReference[oaicite:29]{index=29}. Learners get hands-on experience with tools like BigQuery (for data preprocessing), Kubeflow Pipelines (for automation), and techniques for responsible AI (safety score monitoring):contentReference[oaicite:30]{index=30}. By course end, you’ll know how to train and deploy a domain-specific LLM and manage it in production.",
