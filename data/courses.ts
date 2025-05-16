@@ -365,7 +365,8 @@ const intermediateCourses: Course[] = [
     {
       text: "Python proficiency",
       level: "essential"
-    }]
+    }
+  ]
   }
 ]
 
