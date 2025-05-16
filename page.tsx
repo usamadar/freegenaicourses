@@ -117,6 +117,9 @@ export default function CoursesDirectory() {
                 <p className="mt-2 text-lg text-[hsl(var(--text-secondary))]">
                   Discover high-quality free generative AI courses to advance your skills
                 </p>
+                <p className="mt-1 text-sm text-[hsl(var(--text-secondary))]">
+                  Last updated: May 16, 2025
+                </p>
               </div>
               <div className="flex gap-2">
                 <BookmarkedCourses courses={courses} />
