@@ -10,12 +10,10 @@ import { Separator } from "@/components/ui/separator"
 import { useBookmarkStore } from "@/lib/store"
 import { HydrationZustand } from "@/components/providers/hydration-provider"
 import { CompletedCourses } from "@/components/completed-courses"
-import Link from "next/link"
 import { ViewToggle } from "@/components/view-toggle"
 import { CourseListItem } from "@/components/course-list-item"
 import Hero from "@/components/hero"
 import GettingStarted from "@/components/getting-started"
-import CourseCollections from "@/components/course-collections"
 
 export default function CoursesDirectory() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -113,23 +111,13 @@ export default function CoursesDirectory() {
         <Hero />
         <div className="border-b bg-white/80 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-8">
-            <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-              <div>
-                <h1 className="text-4xl font-bold tracking-tight">
-                  Free GenAI Course Directory
-                </h1>
-                <p className="mt-2 text-lg text-[hsl(var(--text-secondary))]">
-                  Discover high-quality free generative AI courses to advance your skills
-                </p>
-                <p className="mt-1 text-sm text-[hsl(var(--text-secondary))]">
-                  Last updated: May 16, 2025
-                </p>
-              </div>
+            <div className="flex justify-end mb-4">
               <div className="flex gap-2">
                 <BookmarkedCourses courses={courses} />
                 <CompletedCourses courses={courses} />
               </div>
             </div>
+            <GettingStarted />
             <Separator className="my-6" />
             <CourseFilters
               categories={categories}
@@ -153,8 +141,6 @@ export default function CoursesDirectory() {
           </div>
         </div>
 
-        <GettingStarted />
-        <CourseCollections />
 
         <div className="container mx-auto px-4 py-8 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-50 pointer-events-none" />
