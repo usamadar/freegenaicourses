@@ -13,6 +13,9 @@ import { CompletedCourses } from "@/components/completed-courses"
 import Link from "next/link"
 import { ViewToggle } from "@/components/view-toggle"
 import { CourseListItem } from "@/components/course-list-item"
+import Hero from "@/components/hero"
+import GettingStarted from "@/components/getting-started"
+import CourseCollections from "@/components/course-collections"
 
 export default function CoursesDirectory() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -107,6 +110,7 @@ export default function CoursesDirectory() {
   return (
     <HydrationZustand>
       <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
+        <Hero />
         <div className="border-b bg-white/80 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-8">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -148,6 +152,9 @@ export default function CoursesDirectory() {
             />
           </div>
         </div>
+
+        <GettingStarted />
+        <CourseCollections />
 
         <div className="container mx-auto px-4 py-8 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-50 pointer-events-none" />
