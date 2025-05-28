@@ -31,9 +31,9 @@ import { CategoryType } from "@/types/category"
 import { PrerequisitesLegend } from "@/components/prerequisites-legend"
 import { LevelBadge } from "@/components/level-badge"
 
-interface CourseCardProps {
-  course: Course
-}
+export type CourseCardProps = {
+  course: Course;
+};
 
 export function CourseCard({ course }: CourseCardProps) {
   const { toggleBookmark, isBookmarked, toggleComplete, isCompleted } = useBookmarkStore()
